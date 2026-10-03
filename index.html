@@ -4,6 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fabio · Sicurezza & Web</title>
+<meta name="description" content="Fabio Cavalieri — esperto di sicurezza informatica e web designer a Roma. Siti web veloci, curati e protetti, penetration test e hardening.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%237fd3ff'%20d='M12%202%204%205v6c0%205%203.4%209.3%208%2011%204.6-1.7%208-6%208-11V5z'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fabio · Sicurezza & Web">
+<meta property="og:title" content="Fabio Cavalieri — Sicurezza informatica & Web design">
+<meta property="og:description" content="Siti web veloci, belli e blindati. Sicurezza informatica e web design per aziende e professionisti.">
+<meta property="og:image" content="https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://carosello75.github.io/Security-and-Web-developer/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fabio Cavalieri — Sicurezza informatica & Web design">
+<meta name="twitter:description" content="Siti web veloci, belli e blindati.">
+<meta name="twitter:image" content="https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Semi+Condensed:wght@500;600&family=JetBrains+Mono:wght@400&display=swap">
@@ -184,7 +199,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--a
 .copy:hover{color:var(--fg);border-color:var(--fg)}
 
 footer{border-top:1px solid rgba(255,255,255,.08);padding-block:40px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+footer .wrap{display:grid;gap:30px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.share{display:grid;gap:14px;justify-items:center;text-align:center;border:1px solid var(--line);background:var(--surface);padding:26px 20px}
+.share-label{font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg)}
+.share-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.sh{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;text-decoration:none;transition:color .2s,border-color .2s,background .2s}
+.sh:hover{color:var(--fg);border-color:var(--fg)}
+.sh-main{background:var(--accent);color:#000;border-color:var(--accent)}
+.sh-main:hover{background:transparent;color:var(--accent)}
+.share-hint{font-family:var(--mono);font-size:12px;color:var(--ok);min-height:1em;margin:0}
+
 footer nav{display:flex;gap:22px;flex-wrap:wrap}
 footer a{text-decoration:none}
 footer a:hover{color:var(--fg)}
@@ -562,6 +587,18 @@ footer a:hover{color:var(--fg)}
 
 <footer>
   <div class="wrap">
+    <div class="share">
+      <span class="share-label">Condividi questo sito</span>
+      <div class="share-btns">
+        <button class="sh sh-main" id="sh-native" type="button" hidden>Condividi</button>
+        <a class="sh" id="sh-wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="sh" id="sh-fb" target="_blank" rel="noopener">Facebook</a>
+        <a class="sh" id="sh-tg" target="_blank" rel="noopener">Telegram</a>
+        <button class="sh" id="sh-copy" type="button">Copia link</button>
+      </div>
+      <p class="share-hint" id="sh-hint" role="status"></p>
+    </div>
+    <div class="footer-row">
     <span>Fabio © 2026 · Sicurezza informatica & Web design</span>
     <nav>
       <a href="#chi-sono" data-go="chi-sono">Chi sono</a>
@@ -570,6 +607,7 @@ footer a:hover{color:var(--fg)}
       <a href="#contatti" data-go="contatti">Contatti</a>
       <a href="https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH" target="_blank" rel="noopener">YouTube</a>
     </nav>
+    </div>
   </div>
 </footer>
 
@@ -774,6 +812,23 @@ X-Content-Type-Options: nosniff</pre>
     if(!('IntersectionObserver' in window))return;
     var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
     document.querySelectorAll(sel).forEach(function(e){e.classList.add('anim');io.observe(e);});
+  })();
+  // Area Condividi
+  (function(){
+    var url=location.href, title=document.title||"Fabio", text="Siti web veloci, belli e blindati \u2014 Fabio, sicurezza informatica e web design";
+    var e=encodeURIComponent;
+    var wa=document.getElementById("sh-wa"),fb=document.getElementById("sh-fb"),tg=document.getElementById("sh-tg");
+    if(wa)wa.href="https://wa.me/?text="+e(text+" "+url);
+    if(fb)fb.href="https://www.facebook.com/sharer/sharer.php?u="+e(url);
+    if(tg)tg.href="https://t.me/share/url?url="+e(url)+"&text="+e(text);
+    var nat=document.getElementById("sh-native"),hint=document.getElementById("sh-hint");
+    if(nat&&navigator.share){nat.hidden=false;nat.addEventListener("click",function(){navigator.share({title:title,text:text,url:url}).catch(function(){});});}
+    var cp=document.getElementById("sh-copy");
+    if(cp)cp.addEventListener("click",function(){
+      function ok(){if(hint){hint.textContent="Link copiato!";setTimeout(function(){hint.textContent="";},1800);}}
+      function sel(){var t=document.createElement("textarea");t.value=url;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.focus();t.select();try{document.execCommand("copy");ok();}catch(_){}t.remove();}
+      try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(ok,sel);}else{sel();}}catch(_){sel();}
+    });
   })();
 })();
 </script>
