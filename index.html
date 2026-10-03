@@ -76,6 +76,8 @@ p{margin:0;max-width:62ch}
 .yt-embed{position:relative;aspect-ratio:16/9;max-width:100%;min-width:0;border:1px solid var(--line);background:#05070a;overflow:hidden}
 .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .yt-embed::before{content:"Il video si carica qui nel sito pubblicato";position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.btn.meet{border-color:#4285F4;color:#fff;background:#4285F4}
+.btn.meet:hover{background:transparent;color:#fff}
 .live-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:15px;color:#c4c9d0}
 .live-badge{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.18em;color:#fff;background:#ff0033;padding:6px 12px;border-radius:2px;white-space:nowrap}
 .live-badge{animation:livepulse 1.8s infinite}
@@ -315,7 +317,10 @@ footer a:hover{color:var(--fg)}
         <span class="eyebrow">// Community</span>
         <h2>Community Fabio Cavalieri</h2>
         <p class="lead">Il mio canale YouTube: guide, novità e consigli pratici su sicurezza informatica e web. Guarda i video direttamente qui sotto.</p>
-        <div class="live-row"><span class="live-badge">● LIVE</span><span>Facciamo una live insieme: domande, dimostrazioni e Q&amp;A dal vivo. Data e orario annunciati sul canale.</span></div>
+        <div class="live-row"><span class="live-badge">● LIVE</span><span>Facciamo una live insieme: domande, dimostrazioni e Q&amp;A dal vivo. Prenota il tuo posto su Google Meet.</span></div>
+        <div class="row" style="justify-content:flex-start">
+          <a class="btn meet" id="meet-btn" href="https://meet.google.com/" target="_blank" rel="noopener">Prenota su Google Meet</a>
+        </div>
       </div>
       <div class="yt-embed">
         <iframe src="https://www.youtube-nocookie.com/embed/hYFRacKRcYA?list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH" title="Community Fabio Cavalieri" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
