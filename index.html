@@ -75,7 +75,12 @@ p{margin:0;max-width:62ch}
 /* community / youtube */
 .yt-embed{position:relative;aspect-ratio:16/9;max-width:100%;min-width:0;border:1px solid var(--line);background:#05070a;overflow:hidden}
 .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-.yt-embed::before{content:"Il video si carica qui nel sito pubblicato";position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.yt-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:radial-gradient(circle at 50% 42%,#1a0e12,#05070a);display:grid;place-items:center}
+.yt-poster .yt-bg{position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 26px,rgba(255,255,255,.025) 26px 52px)}
+.yt-play{position:relative;z-index:1;width:84px;height:58px;background:#ff0033;border-radius:16px;display:grid;place-items:center;box-shadow:0 12px 40px rgba(255,0,51,.4);transition:transform .2s}
+.yt-play svg{width:34px;height:34px;fill:#fff}
+.yt-poster:hover .yt-play{transform:scale(1.08)}
+.yt-name{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:12px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#e7eaef;background:linear-gradient(transparent,rgba(0,0,0,.75));text-align:center}
 .btn.meet{border-color:#4285F4;color:#fff;background:#4285F4}
 .btn.meet:hover{background:transparent;color:#fff}
 .live-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:15px;color:#c4c9d0}
@@ -323,8 +328,12 @@ footer a:hover{color:var(--fg)}
           <a class="btn meet" id="meet-btn" href="https://meet.google.com/" target="_blank" rel="noopener">Prenota su Google Meet</a>
         </div>
       </div>
-      <div class="yt-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/hYFRacKRcYA?list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH" title="Community Fabio Cavalieri" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      <div class="yt-embed" id="yt">
+        <button class="yt-poster" id="yt-poster" type="button" aria-label="Riproduci il video di Community Fabio Cavalieri">
+          <span class="yt-bg" aria-hidden="true"></span>
+          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="yt-name">Community Fabio Cavalieri · Playlist</span>
+        </button>
       </div>
     </div>
   </div>
@@ -667,6 +676,18 @@ X-Content-Type-Options: nosniff</pre>
     const body=encodeURIComponent("Nome: "+f.nome.value+"\nEmail: "+f.email.value+"\nServizio: "+f.servizio.value+"\n\nMessaggio:\n"+f.msg.value);
     window.location.href="mailto:fabio.cavalieri@libero.it?subject="+subj+"&body="+body;
     t.style.color="";t.textContent="[✓] Si apre il tuo programma di posta con il messaggio pronto per fabio.cavalieri@libero.it.";});
+  // YouTube: carica il player nella pagina al clic (niente apertura di YouTube)
+  const ytp=document.getElementById("yt-poster");
+  if(ytp)ytp.addEventListener("click",()=>{
+    const w=document.getElementById("yt");
+    const f=document.createElement("iframe");
+    f.src="https://www.youtube-nocookie.com/embed/hYFRacKRcYA?list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH&autoplay=1&rel=0";
+    f.title="Community Fabio Cavalieri";
+    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    f.allowFullscreen=true;
+    w.innerHTML="";w.appendChild(f);
+  });
+
   document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
     const s=document.getElementById(b.dataset.c);
     const done=()=>{b.textContent="Copiato";setTimeout(()=>b.textContent="Copia",1500)};
