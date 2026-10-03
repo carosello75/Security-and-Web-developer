@@ -213,6 +213,11 @@ footer a:hover{color:var(--fg)}
   .showcase-frame{margin-inline:-4px}
 }
 
+/* Dinamiche: entrata animata alla comparsa */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.anim.in{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){.anim.in{animation:none}}
+
 @media (prefers-reduced-motion:reduce){.page.active{animation:none}html{scroll-behavior:auto}.wa::after{animation:none}}
 </style>
 </head>
@@ -718,6 +723,13 @@ X-Content-Type-Options: nosniff</pre>
     try{navigator.clipboard.writeText(s.textContent).then(done,()=>sel(s))}catch(_){sel(s)}
     function sel(n){const r=document.createRange();r.selectNodeContents(n);const g=getSelection();g.removeAllRanges();g.addRange(r)}
   }));
+  // Dinamiche: rivela gli elementi con un'entrata quando entrano nello schermo
+  (function(){
+    var sel=".showcase-frame,.band .stack,.band .term,.grid>article,.posts .post,.steps>div,.timeline li,.stats,.yt-embed,.info>div,.live-row";
+    if(!('IntersectionObserver' in window))return;
+    var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll(sel).forEach(function(e){e.classList.add('anim');io.observe(e);});
+  })();
 })();
 </script>
 
