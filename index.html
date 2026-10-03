@@ -179,11 +179,12 @@ footer a:hover{color:var(--fg)}
 .subhero::after{content:"";position:absolute;left:50%;bottom:-1px;width:min(900px,90%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
 
 /* WhatsApp floating button */
-.wa{position:fixed;right:18px;bottom:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.45);transition:transform .2s}
-.wa:hover{transform:scale(1.08)}
-.wa svg{width:32px;height:32px;fill:#fff}
-.wa::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:wa 2.4s infinite}
-@keyframes wa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa{position:fixed;right:18px;bottom:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;background:rgba(11,13,16,.9);border:1.5px solid var(--accent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.5);transition:transform .2s,background .2s}
+.wa:hover{transform:scale(1.08);background:var(--accent)}
+.wa svg{width:30px;height:30px;fill:var(--accent);transition:fill .2s}
+.wa:hover svg{fill:#000}
+.wa::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(127,211,255,.45);animation:wa 2.4s infinite}
+@keyframes wa{0%{box-shadow:0 0 0 0 rgba(127,211,255,.45)}70%{box-shadow:0 0 0 14px rgba(127,211,255,0)}100%{box-shadow:0 0 0 0 rgba(127,211,255,0)}}
 
 @media (prefers-reduced-motion:reduce){.page.active{animation:none}html{scroll-behavior:auto}.wa::after{animation:none}}
 </style>
