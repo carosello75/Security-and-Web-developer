@@ -191,6 +191,18 @@ footer a:hover{color:var(--fg)}
 .wa::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(127,211,255,.45);animation:wa 2.4s infinite}
 @keyframes wa{0%{box-shadow:0 0 0 0 rgba(127,211,255,.45)}70%{box-shadow:0 0 0 14px rgba(127,211,255,0)}100%{box-shadow:0 0 0 0 rgba(127,211,255,0)}}
 
+@media (max-width:640px){
+  .band{padding-block:52px}
+  .showcase{padding-block:4px 40px}
+  .subhero{padding-block:70px 40px}
+  .hero{min-height:auto;padding-block:72px 92px}
+  .term{font-size:11px;line-height:1.7;padding:14px}
+  .wrap{padding-inline:20px}
+  .btn{padding:14px 26px;font-size:13px}
+  .stack{gap:14px}
+  .showcase-frame{margin-inline:-4px}
+}
+
 @media (prefers-reduced-motion:reduce){.page.active{animation:none}html{scroll-behavior:auto}.wa::after{animation:none}}
 </style>
 
