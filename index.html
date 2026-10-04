@@ -820,7 +820,7 @@ X-Content-Type-Options: nosniff</pre>
     if(!f.nome.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||!f.msg.value.trim()){t.style.color="#ffcc66";t.textContent="Compila nome, un'email valida e il messaggio.";return;}
     var btn=f.querySelector('button[type="submit"]'); var old=btn.textContent;
     btn.disabled=true; btn.textContent="Invio…"; t.style.color=""; t.textContent="";
-    var payload={Nome:f.nome.value,Email:f.email.value,Servizio:f.servizio.value,Messaggio:f.msg.value,_subject:"Richiesta dal sito – "+f.servizio.value,_template:"table"};
+    var payload={Nome:f.nome.value,Email:f.email.value,Servizio:f.servizio.value,Messaggio:f.msg.value,_replyto:f.email.value,_subject:"Richiesta dal sito – "+f.servizio.value,_template:"table"};
     fetch("https://formsubmit.co/ajax/fabio.cavalieri@libero.it",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {ok:r.ok,d:d};});})
       .then(function(res){
