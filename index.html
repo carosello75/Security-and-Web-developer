@@ -6,6 +6,12 @@
 <title>Fabio · Sicurezza & Web</title>
 <meta name="description" content="Fabio Cavalieri — esperto di sicurezza informatica e web designer a Roma. Siti web veloci, curati e protetti, penetration test e hardening.">
 <meta name="theme-color" content="#000000">
+<meta name="author" content="Fabio Cavalieri">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="web designer Roma, sicurezza informatica Roma, creazione siti web Roma, realizzazione siti web, penetration test, siti web Carsoli, web design professionisti, SEO locale Roma, protezione sito web">
+<meta name="geo.region" content="IT-62">
+<meta name="geo.placename" content="Roma">
+<link rel="canonical" href="https://carosello75.github.io/Security-and-Web-developer/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%237fd3ff'%20d='M12%202%204%205v6c0%205%203.4%209.3%208%2011%204.6-1.7%208-6%208-11V5z'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fabio · Sicurezza & Web">
@@ -655,6 +661,8 @@ footer a:hover{color:var(--fg)}
     pages.forEach(p=>document.getElementById("p-"+p).classList.toggle("active",p===id));
     document.querySelectorAll(".links a").forEach(a=>{if(a.dataset.go===id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
     links.classList.remove("open"); burger.setAttribute("aria-expanded","false");
+    var titles={home:"Fabio Cavalieri — Web Designer e Sicurezza Informatica a Roma","chi-sono":"Chi sono — Fabio Cavalieri, Web Designer & Security Roma","cosa-faccio":"Servizi — Siti web, SEO e sicurezza informatica a Roma",progetti:"Progetti — Portfolio siti web | Fabio Cavalieri",blog:"Blog — Guide su sicurezza informatica e web design",contatti:"Contatti — Richiedi un preventivo | Fabio Cavalieri"};
+    try{document.title=titles[id]||titles.home;}catch(e){}
     window.scrollTo(0,0);
   }
   document.addEventListener("click",e=>{
@@ -879,6 +887,10 @@ X-Content-Type-Options: nosniff</pre>
     });
   })();
 })();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Fabio Cavalieri — Web Design & Sicurezza Informatica","image":"https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg","url":"https://carosello75.github.io/Security-and-Web-developer/","telephone":"+39 389 500 9266","email":"fabio.cavalieri@libero.it","priceRange":"€€","address":{"@type":"PostalAddress","addressLocality":"Roma","addressRegion":"RM","addressCountry":"IT"},"areaServed":[{"@type":"City","name":"Roma"},{"@type":"City","name":"Carsoli"},{"@type":"Country","name":"Italia"}],"description":"Web designer ed esperto di sicurezza informatica a Roma. Realizzazione di siti web veloci, responsive e protetti, penetration test, hardening e SEO locale.","knowsAbout":["Web design","Sicurezza informatica","Penetration test","SEO locale","E-commerce","Hardening server"],"founder":{"@type":"Person","name":"Fabio Cavalieri","jobTitle":"Web Designer ed Esperto di Sicurezza Informatica","sameAs":["https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH"]},"sameAs":["https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH"]}
 </script>
 
 </body>

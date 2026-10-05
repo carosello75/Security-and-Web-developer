@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carosello75.github.io/Security-and-Web-developer/sitemap.xml
