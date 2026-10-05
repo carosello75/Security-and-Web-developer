@@ -739,6 +739,19 @@ footer a:hover{color:var(--fg)}
 
   // Blog
   const posts=[
+    {c:"guide",d:"05 ott 2026",m:"6 min",t:"Quanto costa un sito web a Roma? Guida ai prezzi 2026",p:"Vetrina, multipagina o e-commerce: cosa determina il prezzo di un sito e come evitare brutte sorprese.",
+     body:`<p>«Quanto costa un sito web?» è la prima domanda di ogni cliente. La risposta onesta è: dipende. Ma esistono fasce chiare. Ecco cosa determina davvero il prezzo di un sito web a Roma.</p>
+<h2>Da cosa dipende il prezzo</h2>
+<ul><li>Numero di pagine e complessità del design</li><li>Funzioni: form, blog, prenotazioni, e-commerce</li><li>Livello di sicurezza e manutenzione</li><li>Ottimizzazione SEO per farti trovare su Google</li></ul>
+<h2>Le fasce tipiche</h2>
+<p><strong>Sito vetrina (1-5 pagine):</strong> ideale per professionisti e piccole attività — presentazione, servizi e contatti.</p>
+<p><strong>Sito multipagina / aziendale:</strong> più sezioni, blog, portfolio e SEO avanzata.</p>
+<p><strong>E-commerce:</strong> catalogo, pagamenti sicuri, gestione ordini e conformità GDPR.</p>
+<div class="callout">Diffida dei prezzi troppo bassi: spesso nascondono template riciclati, nessuna sicurezza e nessuna assistenza. Un sito è un investimento che deve portarti clienti.</div>
+<h2>Cosa dovrebbe essere sempre incluso</h2>
+<ul><li>Design responsive, perfetto su telefono</li><li>Velocità e ottimizzazione per Google</li><li>HTTPS e misure di sicurezza di base</li><li>Un referente a cui rivolgerti dopo la messa online</li></ul>
+<h2>Come avere un prezzo preciso</h2>
+<p>L’unico modo per sapere quanto costa il <em>tuo</em> sito è partire dai tuoi obiettivi. Raccontami la tua attività e cosa ti serve: ti preparo un preventivo chiaro, senza sorprese e senza impegno.</p>`},
     {c:"sicurezza",d:"02 ott 2026",m:"5 min",t:"Truffe online 2026: le 6 pi\u00f9 diffuse e come difenderti",p:"Finti corrieri, finte banche, finto supporto tecnico: come riconoscerle prima di cliccare.",
      body:`<p>Le truffe online cambiano faccia ogni anno, ma puntano sempre sulla fretta e sulla paura. Ecco le pi\u00f9 diffuse del 2026 e come riconoscerle prima di cliccare.</p>
 <h2>1. Finto corriere / pacco in giacenza</h2><p>SMS o email che chiedono di \u201cpagare 1\u20ac per la consegna\u201d. Il sito \u00e8 una copia e rubano i dati della carta. Nessun corriere chiede pagamenti via SMS.</p>
@@ -950,9 +963,13 @@ X-Content-Type-Options: nosniff</pre>
       seo:{label:"Trovami su Google",reply:"Ottimizzo il sito per la ricerca locale a Roma: struttura, parole chiave, velocità e dati per Google, così i clienti ti trovano quando cercano i tuoi servizi.",cta:[["Parliamone","go","contatti"],["Chiama Fabio","tel"]]},
       prezzi:{label:"Quanto costa",reply:"Ogni progetto è su misura: il prezzo dipende da pagine, funzioni e livello di sicurezza. Raccontami cosa ti serve e ti preparo un preventivo chiaro, senza sorprese.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
       tempi:{label:"Tempi di realizzazione",reply:"Un sito vetrina richiede di solito 1-3 settimane, un e-commerce un po' di più. Ti do tempi precisi dopo aver capito il progetto.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]},
-      manutenzione:{label:"Manutenzione e assistenza",reply:"Dopo la messa online resto il tuo riferimento: aggiornamenti, backup, monitoraggio della sicurezza e modifiche quando servono.",cta:[["Scrivimi","wa"],["Contatti","go","contatti"]]}
+      manutenzione:{label:"Manutenzione e assistenza",reply:"Dopo la messa online resto il tuo riferimento: aggiornamenti, backup, monitoraggio della sicurezza e modifiche quando servono.",cta:[["Scrivimi","wa"],["Contatti","go","contatti"]]},
+      gdpr:{label:"GDPR e privacy",reply:"Metto il tuo sito in regola con il GDPR: cookie banner corretto, informativa privacy e gestione sicura dei dati dei clienti. Eviti sanzioni e trasmetti fiducia.",cta:[["Parliamone","go","contatti"],["Chiama Fabio","tel"]]},
+      rifacimento:{label:"Rifare un sito vecchio",reply:"Hai un sito datato, lento o non responsive? Lo rifaccio da zero o lo ammoderno: design attuale, velocità, sicurezza e SEO, mantenendo i tuoi contenuti.",cta:[["Richiedi preventivo","go","contatti"],["Vedi progetti","go","progetti"]]},
+      urgenza:{label:"Sito violato? Urgenza",reply:"Sito bloccato, hackerato o pieno di spam? Intervengo in emergenza: metto in sicurezza, ripulisco e ripristino. Scrivi URGENTE e hai la precedenza.",cta:[["Scrivimi ora","wa"],["Chiama Fabio","tel"]]},
+      settori:{label:"Siti per la tua attività",reply:"Realizzo siti su misura per ogni settore: avvocati, medici, ristoranti, negozi, artigiani ed e-commerce. Guarda i progetti demo per vedere il risultato.",cta:[["Vedi progetti","go","progetti"],["Richiedi preventivo","go","contatti"]]}
     };
-    var order=["sicurezza","proteggere","creare","efficienti","seo","ecommerce"];
+    var order=["sicurezza","proteggere","creare","efficienti","seo","ecommerce","settori"];
     function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
     function addMsg(who,html){var d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;}
     function ctaHTML(cta){if(!cta)return "";var h='<div class="cta">';cta.forEach(function(c){if(c[1]==="wa"){h+='<a href="'+WA+'" target="_blank" rel="noopener">'+esc(c[0])+"</a>";}else if(c[1]==="tel"){h+='<a href="tel:+393895009266">'+esc(c[0])+"</a>";}else{h+='<button type="button" data-go="'+c[2]+'">'+esc(c[0])+"</button>";}});return h+"</div>";}
@@ -965,13 +982,17 @@ X-Content-Type-Options: nosniff</pre>
     closeB.addEventListener("click",closeChat);
     body.addEventListener("click",function(e){if(e.target.closest("button[data-go]"))closeChat();});
     form.addEventListener("submit",function(e){e.preventDefault();var q=text.value.trim();if(!q)return;addMsg("user",esc(q));text.value="";var s=q.toLowerCase();var k=null;
-      if(/sicur|hack|violat|attacc|penetration|vulnerab|malware/.test(s))k="sicurezza";
+      if(/urgen|violat|hackerat|bloccat|compromess/.test(s))k="urgenza";
+      else if(/sicur|hack|penetration|vulnerab|malware/.test(s))k="sicurezza";
+      else if(/gdpr|privacy|cookie|dati personali/.test(s))k="gdpr";
       else if(/protegg|firewall|backup|https|spam|antivirus/.test(s))k="proteggere";
+      else if(/rifa|rifare|vecchio|ammoder|restyling|rinnov/.test(s))k="rifacimento";
       else if(/cost|prezz|quanto|preventiv|budget/.test(s))k="prezzi";
       else if(/temp|quando|durat|consegn/.test(s))k="tempi";
       else if(/manuten|assisten|aggiorn/.test(s))k="manutenzione";
       else if(/seo|google|posizion|trovar|ricerca/.test(s))k="seo";
       else if(/veloc|efficien|performance|lent|ottimizz/.test(s))k="efficienti";
+      else if(/ristorant|avvocat|medic|artigian|settore|categoria|attivit/.test(s))k="settori";
       else if(/ecommerce|e-commerce|negozio|shop|vendere|prodotti|pagament|digitali/.test(s))k="ecommerce";
       else if(/sito|web|landing|vetrina|pagina|realizz|design|cre/.test(s))k="creare";
       setTimeout(function(){if(k){botReply(topics[k]);}else{addMsg("bot","Ottima domanda! Per una risposta su misura scrivimi su WhatsApp o lasciami un messaggio nei contatti."+ctaHTML([["WhatsApp","wa"],["Contatti","go","contatti"]]));}},300);
