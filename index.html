@@ -576,10 +576,11 @@ footer a:hover{color:var(--fg)}
 
   <div class="band">
     <div class="wrap split" style="align-items:start">
-      <form id="form" action="https://formsubmit.co/fabio.cavalieri@libero.it" method="POST" novalidate>
+      <form id="form" action="https://formsubmit.co/actionactivate1975@gmail.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="Nuova richiesta dal sito">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_cc" value="fabio.cavalieri@libero.it">
         <input type="hidden" name="_next" value="https://carosello75.github.io/Security-and-Web-developer/#contatti">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
         <div class="f2">
@@ -820,8 +821,8 @@ X-Content-Type-Options: nosniff</pre>
     if(!f.nome.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)||!f.msg.value.trim()){t.style.color="#ffcc66";t.textContent="Compila nome, un'email valida e il messaggio.";return;}
     var btn=f.querySelector('button[type="submit"]'); var old=btn.textContent;
     btn.disabled=true; btn.textContent="Invio…"; t.style.color=""; t.textContent="";
-    var payload={Nome:f.nome.value,Email:f.email.value,Servizio:f.servizio.value,Messaggio:f.msg.value,_replyto:f.email.value,_subject:"Richiesta dal sito – "+f.servizio.value,_template:"table"};
-    fetch("https://formsubmit.co/ajax/fabio.cavalieri@libero.it",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)})
+    var payload={Nome:f.nome.value,Email:f.email.value,Servizio:f.servizio.value,Messaggio:f.msg.value,_replyto:f.email.value,_cc:"fabio.cavalieri@libero.it",_subject:"Richiesta dal sito – "+f.servizio.value,_template:"table"};
+    fetch("https://formsubmit.co/ajax/actionactivate1975@gmail.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {ok:r.ok,d:d};});})
       .then(function(res){
         if(res.ok){ t.style.color=""; t.textContent="[✓] Richiesta inviata! Ti risponderò al più presto."; f.reset(); }
@@ -831,7 +832,7 @@ X-Content-Type-Options: nosniff</pre>
         var subj=encodeURIComponent("Richiesta dal sito – "+f.servizio.value);
         var body=encodeURIComponent("Nome: "+f.nome.value+"\nEmail: "+f.email.value+"\nServizio: "+f.servizio.value+"\n\nMessaggio:\n"+f.msg.value);
         t.style.color="#ffcc66"; t.textContent="Invio diretto non disponibile: apro il tuo programma di posta…";
-        window.location.href="mailto:fabio.cavalieri@libero.it?subject="+subj+"&body="+body;
+        window.location.href="mailto:actionactivate1975@gmail.com?cc=fabio.cavalieri@libero.it&subject="+subj+"&body="+body;
       })
       .then(function(){ btn.disabled=false; btn.textContent=old; });
   });
