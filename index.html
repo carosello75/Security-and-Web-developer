@@ -945,12 +945,17 @@ X-Content-Type-Options: nosniff</pre>
       sicurezza:{label:"Sicurezza informatica",reply:"Mi occupo di sicurezza informatica a Roma: vulnerability assessment, penetration test e hardening dei server. Analizzo il tuo sito, trovo le falle e ti consegno un report chiaro con le priorit\u00e0.",cta:[["Analisi gratuita","go","contatti"],["WhatsApp","wa"]]},
       proteggere:{label:"Proteggere il mio sito",reply:"Proteggo i siti con aggiornamenti, firewall e WAF, HTTPS e header di sicurezza, backup testati e monitoraggio. Sito gi\u00e0 violato? Intervengo d'urgenza.",cta:[["Scrivimi ora","wa"],["Contatti","go","contatti"]]},
       creare:{label:"Creare un sito professionale",reply:"Realizzo siti su misura a Roma: veloci, responsive, ottimizzati per Google e sicuri dal primo giorno \u2014 vetrina, multipagina o landing page.",cta:[["Richiedi preventivo","go","contatti"],["Vedi progetti","go","progetti"]]},
-      ecommerce:{label:"E-commerce + prodotti digitali",reply:"Creo e-commerce con pagamenti sicuri e conformi GDPR, con integrazione di prodotti digitali: download, licenze e corsi online.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]}
+      ecommerce:{label:"E-commerce + prodotti digitali",reply:"Creo e-commerce con pagamenti sicuri e conformi GDPR, con integrazione di prodotti digitali: download, licenze e corsi online.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]},
+      efficienti:{label:"Siti web efficienti",reply:"Un sito efficiente è veloce, chiaro e converte: ottimizzo immagini, codice e velocità (Core Web Vitals), lo rendo perfetto su mobile e guido il visitatore all'azione — più contatti e più vendite.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
+      seo:{label:"Trovami su Google",reply:"Ottimizzo il sito per la ricerca locale a Roma: struttura, parole chiave, velocità e dati per Google, così i clienti ti trovano quando cercano i tuoi servizi.",cta:[["Parliamone","go","contatti"],["Chiama Fabio","tel"]]},
+      prezzi:{label:"Quanto costa",reply:"Ogni progetto è su misura: il prezzo dipende da pagine, funzioni e livello di sicurezza. Raccontami cosa ti serve e ti preparo un preventivo chiaro, senza sorprese.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
+      tempi:{label:"Tempi di realizzazione",reply:"Un sito vetrina richiede di solito 1-3 settimane, un e-commerce un po' di più. Ti do tempi precisi dopo aver capito il progetto.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]},
+      manutenzione:{label:"Manutenzione e assistenza",reply:"Dopo la messa online resto il tuo riferimento: aggiornamenti, backup, monitoraggio della sicurezza e modifiche quando servono.",cta:[["Scrivimi","wa"],["Contatti","go","contatti"]]}
     };
-    var order=["sicurezza","proteggere","creare","ecommerce"];
+    var order=["sicurezza","proteggere","creare","efficienti","seo","ecommerce"];
     function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
     function addMsg(who,html){var d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;}
-    function ctaHTML(cta){if(!cta)return "";var h='<div class="cta">';cta.forEach(function(c){if(c[1]==="wa"){h+='<a href="'+WA+'" target="_blank" rel="noopener">'+esc(c[0])+"</a>";}else{h+='<button type="button" data-go="'+c[2]+'">'+esc(c[0])+"</button>";}});return h+"</div>";}
+    function ctaHTML(cta){if(!cta)return "";var h='<div class="cta">';cta.forEach(function(c){if(c[1]==="wa"){h+='<a href="'+WA+'" target="_blank" rel="noopener">'+esc(c[0])+"</a>";}else if(c[1]==="tel"){h+='<a href="tel:+393895009266">'+esc(c[0])+"</a>";}else{h+='<button type="button" data-go="'+c[2]+'">'+esc(c[0])+"</button>";}});return h+"</div>";}
     function botReply(t){addMsg("bot",esc(t.reply)+ctaHTML(t.cta));}
     function pick(k){addMsg("user",esc(topics[k].label));setTimeout(function(){botReply(topics[k]);},260);}
     function renderChips(){chips.innerHTML="";order.forEach(function(k){var b=document.createElement("button");b.className="chat-chip";b.type="button";b.textContent=topics[k].label;b.addEventListener("click",function(){pick(k);});chips.appendChild(b);});}
@@ -962,6 +967,11 @@ X-Content-Type-Options: nosniff</pre>
     form.addEventListener("submit",function(e){e.preventDefault();var q=text.value.trim();if(!q)return;addMsg("user",esc(q));text.value="";var s=q.toLowerCase();var k=null;
       if(/sicur|hack|violat|attacc|penetration|vulnerab|malware/.test(s))k="sicurezza";
       else if(/protegg|firewall|backup|https|spam|antivirus/.test(s))k="proteggere";
+      else if(/cost|prezz|quanto|preventiv|budget/.test(s))k="prezzi";
+      else if(/temp|quando|durat|consegn/.test(s))k="tempi";
+      else if(/manuten|assisten|aggiorn/.test(s))k="manutenzione";
+      else if(/seo|google|posizion|trovar|ricerca/.test(s))k="seo";
+      else if(/veloc|efficien|performance|lent|ottimizz/.test(s))k="efficienti";
       else if(/ecommerce|e-commerce|negozio|shop|vendere|prodotti|pagament|digitali/.test(s))k="ecommerce";
       else if(/sito|web|landing|vetrina|pagina|realizz|design|cre/.test(s))k="creare";
       setTimeout(function(){if(k){botReply(topics[k]);}else{addMsg("bot","Ottima domanda! Per una risposta su misura scrivimi su WhatsApp o lasciami un messaggio nei contatti."+ctaHTML([["WhatsApp","wa"],["Contatti","go","contatti"]]));}},300);
