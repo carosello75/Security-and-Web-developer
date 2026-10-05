@@ -227,7 +227,34 @@ footer a:hover{color:var(--fg)}
 .subhero .content{display:grid;gap:18px;justify-items:center}
 .subhero::after{content:"";position:absolute;left:50%;bottom:-1px;width:min(900px,90%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
 
-/* WhatsApp floating button */
+/* Chatbot / assistente (in basso a sinistra) */
+.chat-launch{position:fixed;left:18px;bottom:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;background:var(--accent);border:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.5);transition:transform .2s}
+.chat-launch:hover{transform:scale(1.08)}
+.chat-launch svg{width:28px;height:28px;fill:#001018}
+.chat-panel{position:fixed;left:18px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:61;width:min(360px,calc(100vw - 36px));max-height:min(70vh,560px);display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.6)}
+.chat-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line);background:#0e1116}
+.chat-id strong{font-family:var(--display);letter-spacing:.04em;font-size:15px;display:block;color:var(--fg)}
+.chat-id small{color:var(--ok);font-size:11px;font-family:var(--mono)}
+.chat-dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);flex:none}
+.chat-close{margin-left:auto;background:none;border:0;color:var(--muted);font-size:24px;line-height:1;cursor:pointer;padding:0 4px}
+.chat-close:hover{color:var(--fg)}
+.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.msg{max-width:88%;padding:10px 13px;border-radius:12px;line-height:1.5}
+.msg.bot{align-self:flex-start;background:#11151b;border:1px solid var(--line);color:#dfe3e9;border-bottom-left-radius:3px}
+.msg.user{align-self:flex-end;background:var(--accent);color:#001018;border-bottom-right-radius:3px}
+.msg .cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.msg .cta a,.msg .cta button{font-family:var(--display);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:6px;cursor:pointer;text-decoration:none}
+.msg .cta a:hover,.msg .cta button:hover{background:var(--accent);color:#001018}
+.chat-chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 12px}
+.chat-chip{font-family:var(--display);font-size:11px;letter-spacing:.05em;padding:8px 12px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:20px;cursor:pointer}
+.chat-chip:hover{border-color:var(--accent);color:var(--fg)}
+.chat-input{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);background:#0e1116}
+.chat-input input{flex:1;min-width:0;background:#11151b;border:1px solid var(--line);border-radius:8px;color:var(--fg);padding:10px 12px;font:inherit;font-size:14px}
+.chat-input input:focus{outline:none;border-color:var(--accent)}
+.chat-input button{background:var(--accent);color:#001018;border:0;border-radius:8px;width:44px;cursor:pointer;font-size:15px;flex:none}
+@media (max-width:480px){.chat-panel{max-height:68vh;left:12px;width:calc(100vw - 24px)}.chat-launch{left:12px}}
+
+
 .wa{position:fixed;right:18px;bottom:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;background:rgba(11,13,16,.9);border:1.5px solid var(--accent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.5);transition:transform .2s,background .2s}
 .wa:hover{transform:scale(1.08);background:var(--accent)}
 .wa svg{width:30px;height:30px;fill:var(--accent);transition:fill .2s}
@@ -622,6 +649,25 @@ footer a:hover{color:var(--fg)}
 </section>
 </main>
 
+<div class="chatw">
+  <button class="chat-launch" id="chat-launch" type="button" aria-label="Apri l'assistente" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8l-4 4V5a1 1 0 0 1 1-1Z"/><circle cx="9" cy="11" r="1.1" fill="#001018"/><circle cx="12.5" cy="11" r="1.1" fill="#001018"/><circle cx="16" cy="11" r="1.1" fill="#001018"/></svg>
+  </button>
+  <div class="chat-panel" id="chat-panel" hidden role="dialog" aria-label="Assistente di Fabio">
+    <div class="chat-head">
+      <span class="chat-dot" aria-hidden="true"></span>
+      <div class="chat-id"><strong>Assistente di Fabio</strong><small>Online · risponde subito</small></div>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Chiudi">×</button>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chat-chips" id="chat-chips"></div>
+    <form class="chat-input" id="chat-input">
+      <input id="chat-text" type="text" placeholder="Scrivi un messaggio…" autocomplete="off" aria-label="Scrivi un messaggio">
+      <button type="submit" aria-label="Invia">➤</button>
+    </form>
+  </div>
+</div>
+
 <a class="wa" href="https://wa.me/393895009266" target="_blank" rel="noopener" aria-label="Scrivimi su WhatsApp al 389 500 9266">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.64.72.23 1.38.2 1.9.12.58-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2a9.9 9.9 0 0 0-8.49 15.07L2 22l5.05-1.48A9.9 9.9 0 1 0 12 2zm0 18.08a8.17 8.17 0 0 1-4.17-1.14l-.3-.18-3 .88.9-2.92-.2-.31A8.18 8.18 0 1 1 12 20.08z"/></svg>
 </a>
@@ -886,6 +932,41 @@ X-Content-Type-Options: nosniff</pre>
       function sel(){var t=document.createElement("textarea");t.value=url;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.focus();t.select();try{document.execCommand("copy");ok();}catch(_){}t.remove();}
       try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(ok,sel);}else{sel();}}catch(_){sel();}
     });
+  })();
+  /* Assistente / chatbot */
+  (function(){
+    var launch=document.getElementById("chat-launch");
+    if(!launch)return;
+    var panel=document.getElementById("chat-panel"),closeB=document.getElementById("chat-close"),
+        body=document.getElementById("chat-body"),chips=document.getElementById("chat-chips"),
+        form=document.getElementById("chat-input"),text=document.getElementById("chat-text");
+    var WA="https://wa.me/393895009266";
+    var topics={
+      sicurezza:{label:"Sicurezza informatica",reply:"Mi occupo di sicurezza informatica a Roma: vulnerability assessment, penetration test e hardening dei server. Analizzo il tuo sito, trovo le falle e ti consegno un report chiaro con le priorit\u00e0.",cta:[["Analisi gratuita","go","contatti"],["WhatsApp","wa"]]},
+      proteggere:{label:"Proteggere il mio sito",reply:"Proteggo i siti con aggiornamenti, firewall e WAF, HTTPS e header di sicurezza, backup testati e monitoraggio. Sito gi\u00e0 violato? Intervengo d'urgenza.",cta:[["Scrivimi ora","wa"],["Contatti","go","contatti"]]},
+      creare:{label:"Creare un sito professionale",reply:"Realizzo siti su misura a Roma: veloci, responsive, ottimizzati per Google e sicuri dal primo giorno \u2014 vetrina, multipagina o landing page.",cta:[["Richiedi preventivo","go","contatti"],["Vedi progetti","go","progetti"]]},
+      ecommerce:{label:"E-commerce + prodotti digitali",reply:"Creo e-commerce con pagamenti sicuri e conformi GDPR, con integrazione di prodotti digitali: download, licenze e corsi online.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]}
+    };
+    var order=["sicurezza","proteggere","creare","ecommerce"];
+    function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+    function addMsg(who,html){var d=document.createElement("div");d.className="msg "+who;d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;}
+    function ctaHTML(cta){if(!cta)return "";var h='<div class="cta">';cta.forEach(function(c){if(c[1]==="wa"){h+='<a href="'+WA+'" target="_blank" rel="noopener">'+esc(c[0])+"</a>";}else{h+='<button type="button" data-go="'+c[2]+'">'+esc(c[0])+"</button>";}});return h+"</div>";}
+    function botReply(t){addMsg("bot",esc(t.reply)+ctaHTML(t.cta));}
+    function pick(k){addMsg("user",esc(topics[k].label));setTimeout(function(){botReply(topics[k]);},260);}
+    function renderChips(){chips.innerHTML="";order.forEach(function(k){var b=document.createElement("button");b.className="chat-chip";b.type="button";b.textContent=topics[k].label;b.addEventListener("click",function(){pick(k);});chips.appendChild(b);});}
+    function openChat(){panel.hidden=false;launch.setAttribute("aria-expanded","true");if(!body.dataset.init){addMsg("bot","Ciao! Sono l'assistente di Fabio \ud83d\udc4b Come posso aiutarti? Scegli un argomento qui sotto o scrivimi la tua domanda.");body.dataset.init="1";}try{text.focus();}catch(e){}}
+    function closeChat(){panel.hidden=true;launch.setAttribute("aria-expanded","false");}
+    launch.addEventListener("click",function(){panel.hidden?openChat():closeChat();});
+    closeB.addEventListener("click",closeChat);
+    body.addEventListener("click",function(e){if(e.target.closest("button[data-go]"))closeChat();});
+    form.addEventListener("submit",function(e){e.preventDefault();var q=text.value.trim();if(!q)return;addMsg("user",esc(q));text.value="";var s=q.toLowerCase();var k=null;
+      if(/sicur|hack|violat|attacc|penetration|vulnerab|malware/.test(s))k="sicurezza";
+      else if(/protegg|firewall|backup|https|spam|antivirus/.test(s))k="proteggere";
+      else if(/ecommerce|e-commerce|negozio|shop|vendere|prodotti|pagament|digitali/.test(s))k="ecommerce";
+      else if(/sito|web|landing|vetrina|pagina|realizz|design|cre/.test(s))k="creare";
+      setTimeout(function(){if(k){botReply(topics[k]);}else{addMsg("bot","Ottima domanda! Per una risposta su misura scrivimi su WhatsApp o lasciami un messaggio nei contatti."+ctaHTML([["WhatsApp","wa"],["Contatti","go","contatti"]]));}},300);
+    });
+    renderChips();
   })();
 })();
 </script>
