@@ -2,10 +2,12 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://fabiocavalieri.it https://i.ytimg.com; frame-src https://www.youtube-nocookie.com; connect-src https://formsubmit.co; form-action https://formsubmit.co mailto:; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="google-site-verification" content="t2LXMpTT2aSrr30QJw6UjswIAib-s-ptIN4AxcukrkY">
-<title>Fabio · Sicurezza & Web</title>
-<meta name="description" content="Fabio Cavalieri — esperto di sicurezza informatica e web designer a Roma. Siti web veloci, curati e protetti, penetration test e hardening.">
+<title>Fabio Cavalieri · Sicurezza informatica e Web design a Roma</title>
+<meta name="description" content="Fabio Cavalieri, esperto di sicurezza informatica e web designer a Roma: analisi di vulnerabilità, penetration test, hardening e siti web veloci e protetti. Prima analisi gratuita.">
 <meta name="theme-color" content="#000000">
 <meta name="author" content="Fabio Cavalieri">
 <meta name="robots" content="index, follow">
@@ -13,9 +15,9 @@
 <meta name="geo.region" content="IT-62">
 <meta name="geo.placename" content="Roma">
 <link rel="canonical" href="https://carosello75.github.io/Security-and-Web-developer/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%237fd3ff'%20d='M12%202%204%205v6c0%205%203.4%209.3%208%2011%204.6-1.7%208-6%208-11V5z'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Fabio · Sicurezza & Web">
+<meta property="og:site_name" content="Cavalieri Security · Fabio Cavalieri">
 <meta property="og:title" content="Fabio Cavalieri — Sicurezza informatica & Web design">
 <meta property="og:description" content="Siti web veloci, belli e blindati. Sicurezza informatica e web design per aziende e professionisti.">
 <meta property="og:image" content="https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg">
@@ -291,16 +293,42 @@ footer a:hover{color:var(--fg)}
 @media (prefers-reduced-motion:reduce){.anim.in{animation:none}}
 
 @media (prefers-reduced-motion:reduce){.page.active{animation:none}html{scroll-behavior:auto}.wa::after{animation:none}}
+
+/* === Miglioramenti ottobre 2026 === */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px}
+.proj{display:flex;flex-direction:column;gap:6px;text-decoration:none;border:1px solid var(--line);background:var(--surface);padding:0 0 18px;overflow:hidden;transition:border-color .2s,transform .2s}
+.proj img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:10px;filter:saturate(.9)}
+.proj .proj-tag{font-family:var(--mono);font-size:12px;color:var(--accent);padding-inline:18px;letter-spacing:.06em}
+.proj strong{font-family:var(--display);font-size:20px;font-weight:600;padding-inline:18px;letter-spacing:.02em}
+.proj:hover{border-color:var(--accent);transform:translateY(-3px)}
+.sector-links{display:flex;flex-wrap:wrap;gap:10px}
+.sector-links a{border:1px solid var(--line);padding:10px 16px;text-decoration:none;font-size:15px;color:var(--fg);transition:border-color .2s,color .2s}
+.sector-links a:hover{border-color:var(--accent);color:var(--accent)}
+.prices .price{font-family:var(--display);font-size:30px;font-weight:600;color:var(--accent);margin:4px 0 10px}
+/* Leggibilità: testo meno sottile e più grande */
+body{font-weight:400}
+.lead{color:#c9ced6}
+p,li{line-height:1.75}
+@media (max-width:780px){
+  body{font-size:18px}
+  .lead{font-size:19px !important;line-height:1.7}
+  p,li{font-size:18px}
+  .note,.eyebrow,.tag,.meta{font-size:14px !important}
+  .links a{font-size:15px}
+  .btn{font-size:14px;padding:16px 22px}
+  input,select,textarea{font-size:18px !important}
+  .proj strong{font-size:22px}
+  .sector-links a{font-size:17px;padding:12px 16px}
+}
+.brand-logo{height:34px;width:auto;display:block}
+@media (max-width:780px){.brand-logo{height:26px}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <a class="brand" href="#home" data-go="home" aria-label="Fabio, home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
-      Fabio
-    </a>
+    <a class="brand" href="#home" data-go="home" aria-label="Cavalieri Security, torna alla home"><img src="logo.svg" alt="Cavalieri Security" class="brand-logo" width="319" height="52"></a>
     <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="links" id="links">
       <li><a href="#home" data-go="home">Home</a></li>
@@ -425,10 +453,10 @@ footer a:hover{color:var(--fg)}
       <div class="stack">
         <span class="eyebrow">// Community</span>
         <h2>Community Fabio Cavalieri</h2>
-        <p class="lead">Il mio canale YouTube: guide, novità e consigli pratici su sicurezza informatica e web. Guarda i video direttamente qui sotto.</p>
-        <div class="live-row"><span class="live-badge">● LIVE</span><span>Facciamo una live insieme: domande, dimostrazioni e Q&amp;A dal vivo. Prenota il tuo posto su Google Meet.</span></div>
+        <p class="lead">Il mio canale YouTube: guide, novità e consigli pratici su sicurezza informatica e web. Premi play per guardare la playlist qui accanto.</p>
+        <div class="live-row"><span class="live-badge">● LIVE</span><span>Facciamo una live insieme su Google Meet: domande, dimostrazioni e risposte dal vivo. Scrivimi per ricevere data e link della prossima sessione.</span></div>
         <div class="row" style="justify-content:flex-start">
-          <a class="btn meet" id="meet-btn" href="https://meet.google.com/" target="_blank" rel="noopener">Prenota su Google Meet</a>
+          <a class="btn meet" id="meet-btn" href="https://wa.me/393895009266?text=Ciao%20Fabio%2C%20vorrei%20partecipare%20alla%20prossima%20live%20su%20Google%20Meet" target="_blank" rel="noopener">Prenota il tuo posto alla live</a>
         </div>
       </div>
       <div class="yt-embed" id="yt">
@@ -454,8 +482,8 @@ footer a:hover{color:var(--fg)}
 <section class="page" id="p-chi-sono">
   <div class="subhero"><div class="wrap content">
     <span class="eyebrow">// Chi sono</span>
-    <h1>Fabio</h1>
-    <p class="lead">Esperto di sicurezza informatica e web designer a Roma. Unisco due mestieri che di solito non si parlano: rendere un sito bello e renderlo difficile da attaccare.</p>
+    <h1>Fabio Cavalieri</h1>
+    <p class="lead">Esperto di sicurezza informatica e web designer tra Roma e Carsoli. Unisco due mestieri che di solito non si parlano: rendere un sito bello e renderlo difficile da attaccare.</p>
   </div></div>
 
   <div class="band" id="intro-foto">
@@ -474,7 +502,7 @@ footer a:hover{color:var(--fg)}
     <div class="wrap split">
       <div class="stack">
         <h2>La mia storia</h2>
-        <p>Ho iniziato smontando siti per capire come funzionavano. Poi ho capito che saperli rompere era il modo migliore per imparare a costruirli bene.</p>
+        <p>Ho iniziato studiando come funzionano i siti, pezzo per pezzo, e come vengono attaccati. Ho capito presto che conoscere le tecniche di attacco è il modo migliore per imparare a difendere e a costruire bene.</p>
         <p>Oggi aiuto aziende e professionisti ad avere una presenza online che lavora per loro: veloce, chiara, curata nel design e protetta da chi cerca un punto debole.</p>
         <p>Il mio approccio è semplice. Spiego ogni scelta in parole comprensibili, consegno documentazione e resto disponibile anche dopo la messa online.</p>
       </div>
@@ -494,7 +522,7 @@ footer a:hover{color:var(--fg)}
     <div class="wrap stack">
       <div class="stats">
         <div><strong>OWASP</strong><span>Metodo di riferimento</span></div>
-        <div><strong>24/7</strong><span>Monitoraggio attivo</span></div>
+        <div><strong>1</strong><span>Unico referente per sito e sicurezza</span></div>
         <div><strong>100%</strong><span>Codice su misura</span></div>
       </div>
     </div>
@@ -554,6 +582,19 @@ footer a:hover{color:var(--fg)}
     </div>
   </div>
 
+  <div class="band">
+    <div class="wrap stack">
+      <h2>Quanto costa</h2>
+      <p class="lead">Prezzi di partenza chiari. Il preventivo preciso lo ricevi per iscritto, senza sorprese.</p>
+      <div class="grid prices">
+        <article><span class="tag">SICUREZZA</span><h3>Prima analisi</h3><p class="price">Gratis</p><ul><li>Controllo esterno del sito</li><li>Certificato, header, software esposto</li><li>Resoconto con le priorità</li></ul></article>
+        <article><span class="tag">WEB DESIGN</span><h3>Sito vetrina</h3><p class="price">da € 800</p><ul><li>Fino a circa 5 pagine</li><li>Veloce e sicuro dal primo giorno</li><li>SEO tecnica di base</li></ul></article>
+        <article><span class="tag">SHOP</span><h3>E-commerce</h3><p class="price">da € 2.500</p><ul><li>Pagamenti sicuri</li><li>Conformità GDPR</li><li>Protezione da frodi</li></ul></article>
+      </div>
+      <p class="note">Penetration test, hardening e manutenzione: preventivo su misura in base al perimetro. Altri dettagli su <a href="https://fabiocavalieri.it/servizi.html" style="color:var(--accent)">fabiocavalieri.it</a>.</p>
+    </div>
+  </div>
+
   <div class="band"><div class="wrap stack center">
     <h2>Hai un progetto in mente?</h2>
     <div class="row"><a class="btn solid" href="#contatti" data-go="contatti">Chiedi un preventivo</a></div>
@@ -565,15 +606,36 @@ footer a:hover{color:var(--fg)}
   <div class="subhero"><div class="wrap content">
     <span class="eyebrow">// Progetti</span>
     <h1>I miei progetti</h1>
-    <p class="lead">Una selezione di demo reali realizzati per diversi settori. Sfoglia la galleria qui sotto, direttamente nel sito.</p>
+    <p class="lead">Siti realizzati per clienti reali e una raccolta di esempi per settore. Ogni scheda si apre in una nuova pagina.</p>
   </div></div>
   <div class="band" style="padding-top:30px">
-    <div class="wrap">
-      <div class="embed-wrap">
-        <span class="embed-msg" aria-hidden="true">Caricamento della galleria progetti\u2026</span>
-        <iframe class="proj-frame" src="https://fabiocavalieri.it/progetti-demo/index.html" title="Progetti demo di Fabio Cavalieri" loading="lazy"></iframe>
+    <div class="wrap stack">
+      <span class="eyebrow">// Clienti</span>
+      <div class="projects">
+        <a class="proj" href="https://larosadeldeserto.it/" target="_blank" rel="noopener"><img src="https://fabiocavalieri.it/img/case-rosa-deserto.jpg" alt="Sito web del fiorista La Rosa del Deserto, Roma" width="1024" height="531" loading="lazy"><span class="proj-tag">Fiorista · Roma</span><strong>La Rosa del Deserto</strong></a>
+        <a class="proj" href="https://www.lyflowers.it/" target="_blank" rel="noopener"><img src="https://fabiocavalieri.it/img/case-lyflowers.jpg" alt="E-commerce di fiori Ly Flowers, Roma" width="1024" height="523" loading="lazy"><span class="proj-tag">E-commerce · Roma</span><strong>Ly Flowers</strong></a>
+        <a class="proj" href="https://pasticceriailbaba.it/" target="_blank" rel="noopener"><img src="https://fabiocavalieri.it/img/case-pasticceria-ilbaba.jpg" alt="Sito web Pasticceria il Babà, Carsoli" width="1024" height="524" loading="lazy"><span class="proj-tag">Pasticceria · Carsoli</span><strong>Pasticceria il Babà</strong></a>
+        <a class="proj" href="https://www.tarocchidijessica.com/" target="_blank" rel="noopener"><img src="https://fabiocavalieri.it/img/case-tarocchi-jessica.jpg" alt="Sito web Tarocchi di Jessica" width="1024" height="523" loading="lazy"><span class="proj-tag">Consulenze online</span><strong>Tarocchi di Jessica</strong></a>
       </div>
-      <p class="note" style="margin-top:14px">La galleria \u00e8 incorporata dal sito fabiocavalieri.it e appare qui dentro. Se resta vuota, apri <span style="color:var(--accent)">fabiocavalieri.it/progetti-demo</span> dal tuo browser.</p>
+      <p class="note">Problema, soluzione e risultato di ogni progetto: <a href="https://fabiocavalieri.it/portfolio.html" style="color:var(--accent)">portfolio completo</a>.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap stack">
+      <span class="eyebrow">// Esempi per settore</span>
+      <h2>Come potrebbe essere il tuo sito</h2>
+      <p class="lead">27 siti dimostrativi per mestieri diversi, tutti navigabili.</p>
+      <div class="sector-links">
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-avvocato-roma.html" target="_blank" rel="noopener">Avvocato · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-dentista-roma.html" target="_blank" rel="noopener">Dentista · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-psicologo-roma.html" target="_blank" rel="noopener">Psicologo · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-ristorante-carsoli.html" target="_blank" rel="noopener">Ristorante · Carsoli</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-meccanico-roma.html" target="_blank" rel="noopener">Meccanico · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-ingegnere-informatico-roma.html" target="_blank" rel="noopener">Consulenza IT · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-impresa-edile-roma.html" target="_blank" rel="noopener">Impresa edile · Roma</a>
+        <a href="https://fabiocavalieri.it/progetti-demo/sito-web-gommista-carsoli.html" target="_blank" rel="noopener">Gommista · Carsoli</a>
+      </div>
+      <div><a class="btn" href="https://fabiocavalieri.it/progetti-demo/index.html" target="_blank" rel="noopener">Tutti i 27 esempi</a></div>
     </div>
   </div>
 </section>
@@ -634,15 +696,16 @@ footer a:hover{color:var(--fg)}
         <label for="msg">Messaggio<textarea id="msg" name="msg" required></textarea></label>
         <div><button class="btn solid" type="submit">Invia richiesta</button></div>
         <p class="toast" id="toast" role="status"></p>
-        <p class="note">Il messaggio viene inviato direttamente a Fabio. Risposta entro 24 ore lavorative.</p>
+        <p class="note">Il messaggio arriva direttamente a Fabio: risposta entro 24 ore lavorative. I dati servono solo per risponderti e vengono inviati tramite il servizio FormSubmit (<a href="https://fabiocavalieri.it/privacy-policy.html" target="_blank" rel="noopener" style="color:var(--accent)">privacy</a>).</p>
       </form>
 
       <div class="info">
         <div><div class="k">Email</div><div class="v"><span id="mail">fabio.cavalieri@libero.it</span><button class="copy" data-c="mail">Copia</button></div></div>
         <div><div class="k">Telefono / WhatsApp</div><div class="v"><span id="tel">+39 389 500 9266</span><button class="copy" data-c="tel">Copia</button></div></div>
         <div><div class="k">YouTube</div><div class="v"><a href="https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">Community Fabio Cavalieri ↗</a></div></div>
-        <div><div class="k">Zona</div><div class="v">Roma · da remoto in tutta Italia</div></div>
-        <div><div class="k">Emergenze</div><p>Sito bloccato o violato? Scrivi "URGENTE" nell'oggetto: le richieste urgenti hanno la precedenza.</p></div>
+        <div><div class="k">Zona</div><div class="v">Roma e Carsoli · da remoto in tutta Italia</div></div>
+        <div><div class="k">Emergenze</div><p>Sito bloccato o violato? Nel modulo scegli «Sito violato, serve aiuto urgente» oppure chiamami: le richieste urgenti hanno la precedenza.</p></div>
+        <div><div class="k">Sito principale</div><div class="v"><a href="https://fabiocavalieri.it/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">fabiocavalieri.it ↗</a></div></div>
       </div>
     </div>
   </div>
@@ -657,13 +720,13 @@ footer a:hover{color:var(--fg)}
     <div class="chat-head">
       <span class="chat-dot" aria-hidden="true"></span>
       <div class="chat-id"><strong>Assistente di Fabio</strong><small>Online · risponde subito</small></div>
-      <button class="chat-close" id="chat-close" type="button" aria-label="Chiudi">×</button>
+      <button class="chat-close" id="chat-close" type="button" aria-label="Chiudi l'assistente">×</button>
     </div>
     <div class="chat-body" id="chat-body"></div>
     <div class="chat-chips" id="chat-chips"></div>
     <form class="chat-input" id="chat-input">
       <input id="chat-text" type="text" placeholder="Scrivi un messaggio…" autocomplete="off" aria-label="Scrivi un messaggio">
-      <button type="submit" aria-label="Invia">➤</button>
+      <button type="submit" aria-label="Invia il messaggio">➤</button>
     </form>
   </div>
 </div>
@@ -686,13 +749,14 @@ footer a:hover{color:var(--fg)}
       <p class="share-hint" id="sh-hint" role="status"></p>
     </div>
     <div class="footer-row">
-    <span>Fabio © 2026 · Sicurezza informatica & Web design</span>
+    <span>Fabio Cavalieri © 2026 · Sicurezza informatica e web design · Roma e Carsoli · <a href="https://fabiocavalieri.it/" style="color:var(--accent);text-decoration:none">fabiocavalieri.it</a></span>
     <nav>
       <a href="#chi-sono" data-go="chi-sono">Chi sono</a>
       <a href="#cosa-faccio" data-go="cosa-faccio">Servizi</a>
       <a href="#progetti" data-go="progetti">Progetti</a>
       <a href="#blog" data-go="blog">Blog</a>
       <a href="#contatti" data-go="contatti">Contatti</a>
+      <a href="https://fabiocavalieri.it/siti-web-roma.html">Siti web Roma</a>
       <a href="https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH" target="_blank" rel="noopener">YouTube</a>
     </nav>
     </div>
@@ -766,9 +830,9 @@ footer a:hover{color:var(--fg)}
 <h2>Da cosa dipende il prezzo</h2>
 <ul><li>Numero di pagine e complessità del design</li><li>Funzioni: form, blog, prenotazioni, e-commerce</li><li>Livello di sicurezza e manutenzione</li><li>Ottimizzazione SEO per farti trovare su Google</li></ul>
 <h2>Le fasce tipiche</h2>
-<p><strong>Sito vetrina (1-5 pagine):</strong> ideale per professionisti e piccole attività — presentazione, servizi e contatti.</p>
-<p><strong>Sito multipagina / aziendale:</strong> più sezioni, blog, portfolio e SEO avanzata.</p>
-<p><strong>E-commerce:</strong> catalogo, pagamenti sicuri, gestione ordini e conformità GDPR.</p>
+<p><strong>Sito vetrina (1-5 pagine), da 800 €:</strong> ideale per professionisti e piccole attività — presentazione, servizi e contatti.</p>
+<p><strong>Sito multipagina / aziendale, da 1.500 €:</strong> più sezioni, blog, portfolio e SEO avanzata.</p>
+<p><strong>E-commerce, da 2.500 €:</strong> catalogo, pagamenti sicuri, gestione ordini e conformità GDPR.</p>
 <div class="callout">Diffida dei prezzi troppo bassi: spesso nascondono template riciclati, nessuna sicurezza e nessuna assistenza. Un sito è un investimento che deve portarti clienti.</div>
 <h2>Cosa dovrebbe essere sempre incluso</h2>
 <ul><li>Design responsive, perfetto su telefono</li><li>Velocità e ottimizzazione per Google</li><li>HTTPS e misure di sicurezza di base</li><li>Un referente a cui rivolgerti dopo la messa online</li></ul>
@@ -983,7 +1047,7 @@ X-Content-Type-Options: nosniff</pre>
       ecommerce:{label:"E-commerce + prodotti digitali",reply:"Creo e-commerce con pagamenti sicuri e conformi GDPR, con integrazione di prodotti digitali: download, licenze e corsi online.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]},
       efficienti:{label:"Siti web efficienti",reply:"Un sito efficiente è veloce, chiaro e converte: ottimizzo immagini, codice e velocità (Core Web Vitals), lo rendo perfetto su mobile e guido il visitatore all'azione — più contatti e più vendite.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
       seo:{label:"Trovami su Google",reply:"Ottimizzo il sito per la ricerca locale a Roma: struttura, parole chiave, velocità e dati per Google, così i clienti ti trovano quando cercano i tuoi servizi.",cta:[["Parliamone","go","contatti"],["Chiama Fabio","tel"]]},
-      prezzi:{label:"Quanto costa",reply:"Ogni progetto è su misura: il prezzo dipende da pagine, funzioni e livello di sicurezza. Raccontami cosa ti serve e ti preparo un preventivo chiaro, senza sorprese.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
+      prezzi:{label:"Quanto costa",reply:"Un sito vetrina parte da 800 €, un e-commerce da 2.500 €; la prima analisi di sicurezza è gratuita. Il prezzo preciso dipende da pagine, funzioni e livello di sicurezza: raccontami cosa ti serve e ti preparo un preventivo chiaro.",cta:[["Richiedi preventivo","go","contatti"],["Chiama Fabio","tel"]]},
       tempi:{label:"Tempi di realizzazione",reply:"Un sito vetrina richiede di solito 1-3 settimane, un e-commerce un po' di più. Ti do tempi precisi dopo aver capito il progetto.",cta:[["Richiedi preventivo","go","contatti"],["WhatsApp","wa"]]},
       manutenzione:{label:"Manutenzione e assistenza",reply:"Dopo la messa online resto il tuo riferimento: aggiornamenti, backup, monitoraggio della sicurezza e modifiche quando servono.",cta:[["Scrivimi","wa"],["Contatti","go","contatti"]]},
       gdpr:{label:"GDPR e privacy",reply:"Metto il tuo sito in regola con il GDPR: cookie banner corretto, informativa privacy e gestione sicura dei dati dei clienti. Eviti sanzioni e trasmetti fiducia.",cta:[["Parliamone","go","contatti"],["Chiama Fabio","tel"]]},
@@ -1024,9 +1088,7 @@ X-Content-Type-Options: nosniff</pre>
 })();
 </script>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Fabio Cavalieri — Web Design & Sicurezza Informatica","image":"https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg","url":"https://carosello75.github.io/Security-and-Web-developer/","telephone":"+39 389 500 9266","email":"fabio.cavalieri@libero.it","priceRange":"€€","address":{"@type":"PostalAddress","addressLocality":"Roma","addressRegion":"RM","addressCountry":"IT"},"areaServed":[{"@type":"City","name":"Roma"},{"@type":"City","name":"Carsoli"},{"@type":"Country","name":"Italia"}],"description":"Web designer ed esperto di sicurezza informatica a Roma. Realizzazione di siti web veloci, responsive e protetti, penetration test, hardening e SEO locale.","knowsAbout":["Web design","Sicurezza informatica","Penetration test","SEO locale","E-commerce","Hardening server"],"founder":{"@type":"Person","name":"Fabio Cavalieri","jobTitle":"Web Designer ed Esperto di Sicurezza Informatica","sameAs":["https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH"]},"sameAs":["https://www.youtube.com/watch?v=hYFRacKRcYA&list=PLe5q3jcKSky_pUkJFBMiEYpGeEEUklYoH"]}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Fabio Cavalieri — Web Design & Sicurezza Informatica", "image": "https://carosello75.github.io/Security-and-Web-developer/og-cover.jpg", "url": "https://carosello75.github.io/Security-and-Web-developer/", "telephone": "+39 389 500 9266", "email": "fabio.cavalieri@libero.it", "priceRange": "€€", "address": {"@type": "PostalAddress", "addressLocality": "Carsoli", "addressRegion": "AQ", "addressCountry": "IT"}, "areaServed": [{"@type": "City", "name": "Roma"}, {"@type": "City", "name": "Carsoli"}, {"@type": "AdministrativeArea", "name": "Marsica"}, {"@type": "Country", "name": "Italia"}], "description": "Esperto di sicurezza informatica e web designer tra Roma e Carsoli: vulnerability assessment, penetration test, hardening e siti web veloci e protetti.", "knowsAbout": ["Web design", "Sicurezza informatica", "Penetration test", "SEO locale", "E-commerce", "Hardening server"], "founder": {"@type": "Person", "name": "Fabio Cavalieri", "jobTitle": "Web Designer ed Esperto di Sicurezza Informatica", "sameAs": ["https://fabiocavalieri.it/", "https://www.youtube.com/@fgb0100", "https://www.linkedin.com/in/fabio-cavalieri-079293247/", "https://www.instagram.com/fgb0100/"], "url": "https://fabiocavalieri.it/chi-sono.html"}, "sameAs": ["https://fabiocavalieri.it/", "https://www.youtube.com/@fgb0100", "https://www.linkedin.com/in/fabio-cavalieri-079293247/", "https://www.instagram.com/fgb0100/"]}</script>
 
 </body>
 </html>
